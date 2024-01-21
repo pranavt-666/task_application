@@ -44,6 +44,7 @@
     </style>
 </head>
 <body>
+    <div class="container m-5">
     <div class="task-list-container">
 
         <h1>Task List</h1>
@@ -56,9 +57,9 @@
                 <strong>{{todo.created_date}}</strong><br>
                 <strong>{{todo.task_name}}</strong>
                 <div>
-                <a href="" class="btn btn-info">Detail</a>
+                <a href="{%url 'task-detail' todo.id%}" class="btn btn-info">Detail</a>
                 <a href="" class="btn btn-secondary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
+                <a href="{%url 'task-delete' todo.id%}" class="btn btn-danger">Delete</a>
             </div>
             </li>
         {%endfor%}
@@ -67,5 +68,6 @@
 
 
     </div>
+</div>
 </body>
 </html>
