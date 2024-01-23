@@ -16,16 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from taskapp.views import IndexView, RegistrationView, LoginView, TaskListView, AddTaskView, TaskDetailView, TaskDeleteView
-
+from taskapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', IndexView.as_view()),
-    path('registration/', RegistrationView.as_view()),
-    path('tasklist/', TaskListView.as_view(), name='tasks'),
-    path('addtask/', AddTaskView.as_view(), name='add-task'),
-    path('tasklist/<int:id>', TaskDetailView.as_view(), name='task-detail'),
-    path('tasklist/<int:id>/remove', TaskDeleteView.as_view(), name='task-delete'),
+    path('home/', views.IndexView.as_view()),
+    path('registration/', views.RegistrationView.as_view()),
+    path('tasklist/', views.TaskListView.as_view(), name='tasks'),
+    path('addtask/', views.AddTaskView.as_view(), name='add-task'),
+    path('tasklist/<int:id>', views.TaskDetailView.as_view(), name='task-detail'),
+    path('tasklist/<int:id>/remove',views.TaskDeleteView.as_view(), name='task-delete'),
+    path('accounts/registration', views.RegistrationFormView.as_view(), name='registration'),
+    path('', views.LoginFormView.as_view(), name='signin'),
+    # path('accounts/login', views.LoginFormView.as_view(), name='signin'),
+    path('accounts/logout', views.signout_view, name='signout'),
 
 ]
 
