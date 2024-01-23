@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        {%if messages%}
+            {%for msg in messages%}
+                {{msg}}
+            {%endfor%}
+        {%endif%}
+    </div>
+    <div class="col-4"></div>
+</div>
     <div class="container mt-5">
         <div class="row mt-5">
             <div class="col-2"></div>

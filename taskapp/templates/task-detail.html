@@ -1,12 +1,28 @@
- <!DOCTYPE html>
- <html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
- </head>
+{% extends 'base.html' %}
+{% block content %}
  <body>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        {%if messages%}
+            {%for msg in messages%}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>{{msg}}</strong> 
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>{{msg}}</strong> 
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {%endfor%}
+        {%endif%}
+    </div>
+    <div class="col-4"></div>
+</div>
   <div class="container mt-5">
     <div class="row">
       <div class="col-4"></div>
@@ -25,4 +41,4 @@
   </div>
 
  </body>
- </html>
+ {% endblock %}

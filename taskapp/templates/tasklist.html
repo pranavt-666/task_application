@@ -37,23 +37,33 @@
     </style>
 {% block content %}
 <body>
-    <div class="container m-5">
+
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4">
                 {%if messages%}
-                    {%for msg in messages%}
-                        {{msg}}
-                    {%endfor%}
-                {%endif%}
+                {%for msg in messages%}
+                {% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>{{msg}}</strong> 
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <strong>{{msg}}</strong> 
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+                {%endfor%}
+            {%endif%}
             </div>
             <div class="col-4"></div>
         </div>
+        <div class="container m-2">
     <div class="task-list-container">
-
         <h1>Task List</h1>
         <ul>
-            
             {% for todo in todos%}
             <li>
                 <strong>{{todo.id}}</strong> <br>
