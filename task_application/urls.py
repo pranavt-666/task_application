@@ -29,7 +29,6 @@ urlpatterns = [
     path('', views.LoginFormView.as_view(), name='signin'),
     # path('accounts/login', views.LoginFormView.as_view(), name='signin'),
     path('accounts/logout', views.signout_view, name='signout'),
-
+    path('task/change/<int:id>', views.TaskUpdateView.as_view(), name='task-update'),
 ]
-
 
